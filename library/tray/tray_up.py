@@ -8,7 +8,7 @@ print(configuration)
 
 motor_moving = False
 
-direction = 1
+direction = 0
 
 def setup():
 	# setting up the Respberry pi modes
