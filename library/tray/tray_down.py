@@ -10,8 +10,9 @@ motor_moving = False
 
 direction = 1
 
+
 def setup():
-	# setting up the Respberry pi modes
+	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
 	gpio.setmode(gpio.BCM)  # Use physical pin numbering
 
