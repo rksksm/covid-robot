@@ -1,18 +1,10 @@
 {
-  "tray": {
-    "tray_up": {
-      "motor_1_direction_pin": 20,
-      "motor_1_step_pin": 21,
-      "motor_2_direction_pin": 16,
-      "motor_2_step_pin": 26,
-      "clockwise": 0
-    },
-    "tray_down": {
-      "motor_1_direction_pin": 20,
-      "motor_1_step_pin": 21,
-      "motor_2_direction_pin": 16,
-      "motor_2_step_pin": 26,
-      "clockwise": 1
-    }
-  }
+	"tray": {
+		"motor_1_direction_pin": 20,
+		"motor_1_step_pin": 21,
+		"motor_2_direction_pin": 18,
+		"motor_2_step_pin": 19,
+		"top_switch": 14,
+		"bottom_switch": 15
+	}
 }
