@@ -8,6 +8,7 @@ print(configuration)
 
 motor_moving = False
 
+direction = 1
 
 def setup():
 	# setting up the Respberry pi modes
@@ -17,12 +18,12 @@ def setup():
 	# setting up the motor 1
 	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration['clockwise'])
+	gpio.output(configuration['motor_1_direction_pin'], direction)
 
 	# setting up the motor 2
 	gpio.setup(configuration['motor_2_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_2_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_2_direction_pin'], configuration['clockwise'])
+	gpio.output(configuration['motor_2_direction_pin'], direction)
 
 	# setting up cut switches
 	gpio.setup(configuration['top_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # top switch
