@@ -18,6 +18,9 @@ gpio.output(TRIG, True)
 time.sleep(0.00001)
 gpio.output(TRIG, False)
 
+pulse_start = 0
+pulse_end = 0
+
 while gpio.input(ECHO) == 1:
 	pulse_start = time.time()
 
@@ -28,7 +31,6 @@ pulse_duration = pulse_end - pulse_start
 
 distance = round(pulse_duration * 17150, 2)
 
-print(f"Distance: {distance} cm")
+print("Distance: "+str(distance)+" cm")
 
 gpio.cleanup()
-
