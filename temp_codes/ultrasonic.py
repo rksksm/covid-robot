@@ -14,6 +14,7 @@ GPIO.setup(GPIO_ECHO, GPIO.IN)
 
 
 def distance():
+	print("running")
 	# set Trigger to HIGH
 	GPIO.output(GPIO_TRIGGER, True)
 
