@@ -18,8 +18,8 @@ gpio.output(TRIG, True)
 time.sleep(0.00001)
 gpio.output(TRIG, False)
 
-pulse_start = 0
-pulse_end = 0
+# pulse_start = 0
+# pulse_end = 0
 
 while gpio.input(ECHO) == 1:
 	pulse_start = time.time()
