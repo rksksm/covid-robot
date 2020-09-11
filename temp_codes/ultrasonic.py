@@ -75,12 +75,15 @@ try:
 		time.sleep(0.00001)
 		gpio.output(TRIG, False)
 
+		pulse_start = 0
+		pulse_end = 0
+
 		while gpio.input(ECHO) == 1:
-			pulse_start = time.time()
+			pulse_start += time.time()
 			print("pulse started ", pulse_start)
 
 		while gpio.input(ECHO) == 1:
-			pulse_end = time.time()
+			pulse_end += time.time()
 			print("pulse end ", pulse_end)
 
 		pulse_duration = pulse_end - pulse_start
