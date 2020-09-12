@@ -70,14 +70,14 @@ def motor_rotate(pause=False):
 
 
 def start_condition():
-	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
+	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return True
 	else:
 		return False
 
 
 def stop_condition():
-	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
+	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
 		return False
 	else:
 		return True
@@ -91,8 +91,8 @@ if __name__ == '__main__':
 			while stop_condition():
 				dist = distance()
 				print(dist, "cm")
-				if dist < 10:
+				if dist < 20:
 					motor_rotate(pause=False)
-					sleep(2)
+					sleep(3)
 				else:
 					motor_rotate(pause=True)
