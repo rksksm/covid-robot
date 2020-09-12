@@ -86,11 +86,8 @@ if __name__ == '__main__':
 	setup()
 	print("setup completed")
 	while True:
-		print("entered main program")
 		while start_condition():
 			print("condition 1 success")
 			while stop_condition():
 				print("condition 2 success")
 				motor_rotate()
-			print("condition 2 failed")
-		print("condition 1 failed")
