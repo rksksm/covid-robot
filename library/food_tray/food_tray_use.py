@@ -91,6 +91,6 @@ if __name__ == '__main__':
 			while stop_condition():
 				dist = distance()
 				if 5 <= dist < 30:
-					motor_rotate(pause=False)
-				else:
 					motor_rotate(pause=True)
+				else:
+					motor_rotate(pause=False)
