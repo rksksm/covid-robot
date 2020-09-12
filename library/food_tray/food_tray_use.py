@@ -30,6 +30,7 @@ def setup():
 	gpio.setup(configuration['top_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # top switch
 	gpio.setup(configuration['bottom_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # bottom Switch
 
+
 def motor_rotate(pause=False):
 	if not pause:
 		gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
@@ -60,8 +61,8 @@ if __name__ == '__main__':
 	while True:
 		while start_condition():
 			while stop_condition():
-				if gpio.input(configuration['IR_sensor']):
-					print("object detected")
-					motor_rotate(pause=True)
-					while gpio.input(configuration['IR_sensor']):
-						time.sleep(1)
+				# if gpio.input(configuration['IR_sensor']):
+				# print("object detected")
+				motor_rotate(pause=True)
+			# while gpio.input(configuration['IR_sensor']):
+			# 	time.sleep(1)
