@@ -76,7 +76,7 @@ def start_condition():
 
 
 def stop_condition():
-	if (gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW) or distance() < 20:
+	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
 		return False
 	else:
 		return True
