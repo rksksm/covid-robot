@@ -13,50 +13,22 @@ def setup():
 	gpio.setwarnings(False)  # Ignore warning for now
 	gpio.setmode(gpio.BCM)  # Use physical pin numbering
 
-	# setting up Ultrasonic sensor
-	gpio.setup(configuration['ultrasonic_trigger'], gpio.OUT)
-	gpio.setup(configuration['ultrasonic_echo'], gpio.IN)
+	# setting up IR_sensor
+	gpio.setup(configuration['IR_sensor'], gpio.IN)
 
 	# setting up the motor 1
 	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
+	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_up"])
 
 	# setting up the motor 2
 	gpio.setup(configuration['motor_2_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_2_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_2_direction_pin'], configuration["direction_down"])
+	gpio.output(configuration['motor_2_direction_pin'], configuration["direction_up"])
 
 	# setting up cut switches
 	gpio.setup(configuration['top_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # top switch
 	gpio.setup(configuration['bottom_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # bottom Switch
-
-def distance():
-	# set Trigger to HIGH
-	gpio.output(configuration['ultrasonic_trigger'], True)
-
-	# set Trigger after 0.01ms to LOW
-	time.sleep(0.00001)
-	gpio.output(configuration['ultrasonic_trigger'], False)
-
-	StartTime = time.time()
-	StopTime = time.time()
-
-	# save StartTime
-	while gpio.input(configuration['ultrasonic_echo']) == 0:
-		StartTime = time.time()
-
-	# save time of arrival
-	while gpio.input(configuration['ultrasonic_echo']) == 1:
-		StopTime = time.time()
-
-	# time difference between start and arrival
-	TimeElapsed = StopTime - StartTime
-	# multiply with the sonic speed (34300 cm/s)
-	# and divide by 2, because there and back
-	distance = (TimeElapsed * 34300) / 2
-
-	return distance
 
 
 def motor_rotate(pause=False):
@@ -70,14 +42,14 @@ def motor_rotate(pause=False):
 
 
 def start_condition():
-	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
+	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
 		return True
 	else:
 		return False
 
 
 def stop_condition():
-	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
+	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return False
 	else:
 		return True
@@ -86,12 +58,11 @@ def stop_condition():
 if __name__ == '__main__':
 	setup()
 	print("setup completed")
+	a = 0
 	while True:
 		while start_condition():
 			while stop_condition():
-				dist = distance()
-				print(dist, "cm")
-				if dist < 20:
+				if not gpio.input(configuration['IR_sensor']):
+					print("object detected", a)
+					a += 1
 					motor_rotate(pause=False)
-				else:
-					motor_rotate(pause=True)
