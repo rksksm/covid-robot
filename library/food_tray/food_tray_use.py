@@ -69,14 +69,14 @@ def distance():
 
 
 def start_condition():
-	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
+	if (gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH) or distance() > 20:
 		return True
 	else:
 		return False
 
 
 def stop_condition():
-	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
+	if (gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW) or distance() < 20:
 		return False
 	else:
 		return True
@@ -87,5 +87,4 @@ if __name__ == '__main__':
 	while True:
 		while start_condition():
 			while stop_condition():
-				if distance() > 20:
-					motor_rotate()
+				motor_rotate()
