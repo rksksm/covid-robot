@@ -19,8 +19,7 @@
 		"direction_down": 1
 	},
 	"food_tray": {
-		"ultrasonic_trigger": 23,
-		"ultrasonic_echo": 24,
+		"IR_sensor": 23,
 		"motor_1_direction_pin": 2,
 		"motor_1_step_pin": 3,
 		"motor_2_direction_pin": 4,
