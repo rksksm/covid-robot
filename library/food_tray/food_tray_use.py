@@ -4,7 +4,7 @@ import RPi.GPIO as gpio
 import json
 
 config_file = open("../../config.json", 'r')
-configuration = json.loads(config_file.read())["tray"]
+configuration = json.loads(config_file.read())["food_tray"]
 print(configuration)
 
 
