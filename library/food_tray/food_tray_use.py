@@ -60,8 +60,8 @@ if __name__ == '__main__':
 	while True:
 		while start_condition():
 			while stop_condition():
-				if not gpio.input(configuration['IR_sensor']):
+				if gpio.input(configuration['IR_sensor']):
 					motor_rotate(pause=True)
-					sleep(1)
+					sleep(5)
 				else:
 					motor_rotate(pause=False)
