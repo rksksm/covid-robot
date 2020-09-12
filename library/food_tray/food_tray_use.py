@@ -40,7 +40,6 @@ def motor_rotate():
 	gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
 	sleep(.0002)
 
-
 def distance():
 	# set Trigger to HIGH
 	gpio.output(configuration['ultrasonic_trigger'], True)
@@ -88,4 +87,5 @@ if __name__ == '__main__':
 	while True:
 		while start_condition():
 			while stop_condition():
-				motor_rotate()
+				if distance() > 20:
+					motor_rotate()
