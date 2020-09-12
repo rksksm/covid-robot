@@ -89,4 +89,8 @@ if __name__ == '__main__':
 	while True:
 		while start_condition():
 			while stop_condition():
-				motor_rotate(pause=False)
+				dist = distance()
+				if 5 <= dist <= 35:
+					motor_rotate(pause=False)
+				else:
+					motor_rotate(pause=True)
