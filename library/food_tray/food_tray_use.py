@@ -91,8 +91,7 @@ if __name__ == '__main__':
 			while stop_condition():
 				dist = distance()
 				print(dist, "cm")
-				if 30 > dist > 1000:
+				if dist < 30 and dist >100:
 					motor_rotate(pause=True)
-					sleep(3)
 				else:
 					motor_rotate(pause=False)
