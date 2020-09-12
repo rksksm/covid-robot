@@ -59,13 +59,14 @@ def distance():
 	return distance
 
 
-def motor_rotate():
-	gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
-	gpio.output(configuration['motor_2_step_pin'], gpio.HIGH)
-	sleep(.0002)
-	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
-	gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
-	sleep(.0002)
+def motor_rotate(pause=False):
+	if not pause:
+		gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
+		gpio.output(configuration['motor_2_step_pin'], gpio.HIGH)
+		sleep(.0002)
+		gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
+		gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
+		sleep(.0002)
 
 
 def start_condition():
@@ -87,7 +88,8 @@ if __name__ == '__main__':
 	print("setup completed")
 	while True:
 		while start_condition():
-			print("condition 1 success")
 			while stop_condition():
-				print("condition 2 success")
-				motor_rotate()
+				if distance() > 5:
+					motor_rotate(pause=False)
+				else:
+					motor_rotate(pause=True)
