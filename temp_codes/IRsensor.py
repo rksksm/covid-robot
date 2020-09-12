@@ -4,7 +4,7 @@ import time
 sensor = 5
 buzzer = 6
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(sensor,GPIO.IN)
 GPIO.setup(buzzer,GPIO.OUT)
 
