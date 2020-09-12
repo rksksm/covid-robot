@@ -93,5 +93,6 @@ if __name__ == '__main__':
 				print(dist, "cm")
 				if dist < 10:
 					motor_rotate(pause=False)
+					sleep(2)
 				else:
 					motor_rotate(pause=True)
