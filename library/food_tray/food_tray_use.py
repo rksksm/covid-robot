@@ -69,7 +69,7 @@ def distance():
 
 
 def start_condition():
-	if (gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH) or distance() > 20:
+	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return True
 	else:
 		return False
