@@ -58,11 +58,8 @@ def stop_condition():
 if __name__ == '__main__':
 	setup()
 	print("setup completed")
-	a = 0
 	while True:
 		while start_condition():
 			while stop_condition():
 				if gpio.input(configuration['IR_sensor']):
-					print("object detected", a)
-					a += 1
 					motor_rotate(pause=False)

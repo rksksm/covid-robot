@@ -19,12 +19,12 @@ def setup():
 	# setting up the motor 1
 	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_up"])
+	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
 
 	# setting up the motor 2
 	gpio.setup(configuration['motor_2_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_2_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_2_direction_pin'], configuration["direction_up"])
+	gpio.output(configuration['motor_2_direction_pin'], configuration["direction_down"])
 
 	# setting up cut switches
 	gpio.setup(configuration['top_switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # top switch
@@ -42,14 +42,14 @@ def motor_rotate(pause=False):
 
 
 def start_condition():
-	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
+	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return True
 	else:
 		return False
 
 
 def stop_condition():
-	if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
+	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
 		return False
 	else:
 		return True
@@ -58,11 +58,8 @@ def stop_condition():
 if __name__ == '__main__':
 	setup()
 	print("setup completed")
-	a = 0
 	while True:
 		while start_condition():
 			while stop_condition():
 				if not gpio.input(configuration['IR_sensor']):
-					print("object detected", a)
-					a += 1
 					motor_rotate(pause=False)
