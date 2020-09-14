@@ -8,15 +8,20 @@
 		"bottom_switch": 15,
 		"direction_up": 0,
 		"direction_down": 1
-	},"camera_tray": {
-		"motor_1_direction_pin": 20,
-		"motor_1_step_pin": 21,
-		"motor_2_direction_pin": 18,
-		"motor_2_step_pin": 19,
-		"top_switch": 14,
-		"bottom_switch": 15,
-		"direction_up": 0,
-		"direction_down": 1
+	},
+	"camera_tray": {
+		"motor_1_direction_pin": 5,
+		"motor_1_step_pin": 6,
+		"switch": 11,
+		"direction_left": 0,
+		"direction_right": 1
+	},
+	"medicine_tray": {
+		"motor_1_direction_pin": 10,
+		"motor_1_step_pin": 9,
+		"switch": 25,
+		"direction_left": 0,
+		"direction_right": 1
 	},
 	"food_tray": {
 		"IR_sensor": 23,

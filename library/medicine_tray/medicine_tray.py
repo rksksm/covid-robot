@@ -17,7 +17,7 @@ def setup():
 	# setting up the motor 1
 	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
 	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_left"])
+	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
 
 	# setting up cut switches
 	gpio.setup(configuration['switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # switch
