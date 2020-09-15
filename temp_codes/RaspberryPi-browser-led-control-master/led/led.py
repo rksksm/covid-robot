@@ -10,15 +10,16 @@ GPIO.setup(18, GPIO.OUT)
 # {{url}}/led?status=on
 @app.route('/', methods=['GET'])
 def led():
-    status = request.args.get('status')
-    if status == "on":
-        GPIO.output(18, GPIO.HIGH)
-        return jsonify({"message": "Led successfully turned on"})
-    elif status == "off":
-        GPIO.output(18, GPIO.LOW)
-        return jsonify({"message": "Led successfully turned off"})
-    else:
-        return jsonify({"message": "Not a valid status"})
+	status = request.args.get('status')
+	if status == "on":
+		GPIO.output(18, GPIO.HIGH)
+		return jsonify({"message": "Led successfully turned on"})
+	elif status == "off":
+		GPIO.output(18, GPIO.LOW)
+		return jsonify({"message": "Led successfully turned off"})
+	else:
+		return jsonify({"message": "Not a valid status"})
+
 
 if __name__ == '__main__':
-    Flask.run(host='0.0.0.0', port=5000)
+	Flask.run(host='0.0.0.0', port=5000, debug=True)
