@@ -21,5 +21,10 @@ def led():
 		return jsonify({"message": "Not a valid status"})
 
 
+@app.route('/hello')
+def home():
+	return "Hey there!"
+
+
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000, debug=True)
