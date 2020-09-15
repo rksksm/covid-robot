@@ -19,3 +19,6 @@ def led():
         return jsonify({"message": "Led successfully turned off"})
     else:
         return jsonify({"message": "Not a valid status"})
+
+if __name__ == '__main__':
+    Flask.run(host='0.0.0.0', port=5000)
