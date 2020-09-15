@@ -21,14 +21,14 @@ def led():
 		return jsonify({"message": "Not a valid status"})
 
 
-@app.route('/lrd_on')
-def home():
+@app.route('/led_on')
+def led_on():
 	GPIO.output(18, GPIO.HIGH)
 	return "LED on"
 
 
-@app.route('/lrd_off')
-def home():
+@app.route('/led_off')
+def led_off():
 	GPIO.output(18, GPIO.LOW)
 	return "LED off"
 
