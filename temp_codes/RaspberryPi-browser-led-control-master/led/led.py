@@ -23,6 +23,7 @@ def led():
 
 @app.route('/hello')
 def home():
+	GPIO.output(18, GPIO.HIGH)
 	return "Hey there!"
 
 
