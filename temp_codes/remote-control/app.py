@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
