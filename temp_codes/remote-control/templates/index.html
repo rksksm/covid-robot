@@ -79,14 +79,14 @@
     $('.switch').find("input[type=checkbox]").on("change", function () {
         let resp;
         var status = $(this).prop('checked');
-        if(status === true){
-            resp = 'on';
+        if(status == true){
+            resp = 1;
         }
         else{
-            resp = 'off';
+            resp = 0;
         }
         $.ajax({
-            url: '/led_on',
+            url: '/power',
             type: "get",
             data: {status: resp}
         })

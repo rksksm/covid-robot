@@ -12,12 +12,12 @@ def home():
 	return render_template("index.html")
 
 
-@app.route('/power/<str:status>')
+@app.route('/power/<int:status>')
 def power(status):
-	if status == "on":
+	if status == 1:
 		GPIO.output(18, GPIO.HIGH)
 		return jsonify({"message": "Led successfully turned on"})
-	elif status == "off":
+	elif status == 0:
 		GPIO.output(18, GPIO.LOW)
 		return jsonify({"message": "Led successfully turned off"})
 	else:
