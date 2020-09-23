@@ -1,0 +1,24 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N811" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="RPi.GPIO.setup" />
+          <option value="RPi.GPIO.output" />
+          <option value="RPi.GPIO.OUT" />
+          <option value="RPi.GPIO.setwarnings" />
+          <option value="RPi.GPIO.setmode" />
+          <option value="RPi.GPIO.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
