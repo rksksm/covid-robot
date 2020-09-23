@@ -14,11 +14,11 @@ def home():
 
 @app.route('/power')
 def power():
-	status = request.args.get('language')
-	if status == 1:
+	status = request.args.get('status')
+	if status == 'true':
 		GPIO.output(18, GPIO.HIGH)
 		return jsonify({"message": "Led successfully turned on"})
-	elif status == 0:
+	elif status == 'false':
 		GPIO.output(18, GPIO.LOW)
 		return jsonify({"message": "Led successfully turned off"})
 	else:
