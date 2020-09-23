@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import RPi.GPIO as GPIO
 
 app = Flask(__name__)
@@ -12,8 +12,9 @@ def home():
 	return render_template("index.html")
 
 
-@app.route('/power/<int:status>')
-def power(status):
+@app.route('/power')
+def power():
+	status = request.args.get('language')
 	if status == 1:
 		GPIO.output(18, GPIO.HIGH)
 		return jsonify({"message": "Led successfully turned on"})
