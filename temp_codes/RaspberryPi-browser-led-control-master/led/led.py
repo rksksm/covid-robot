@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import RPi.GPIO as GPIO
 
 app = Flask(__name__)
@@ -8,7 +8,12 @@ GPIO.setup(18, GPIO.OUT)
 
 
 # {{url}}/led?status=on
-@app.route('/', methods=['GET'])
+@app.route('/')
+def home():
+	return render_template("index.html")
+
+
+@app.route('/status', methods=['GET'])
 def led():
 	status = request.args.get('status')
 	if status == "on":
