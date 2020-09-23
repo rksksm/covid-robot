@@ -77,11 +77,18 @@
 <script type="text/javascript" src="{{ url_for('static', filename = 'js/materialize.min.js') }}"></script>
 <script>
     $('.switch').find("input[type=checkbox]").on("change", function () {
+        let resp;
         var status = $(this).prop('checked');
+        if(status === true){
+            resp = 'on';
+        }
+        else{
+            resp = 'off';
+        }
         $.ajax({
             url: '/led_on',
             type: "get",
-            data: {status: status}
+            data: {status: resp}
         })
     });
 
