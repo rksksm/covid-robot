@@ -87,26 +87,70 @@
 
     $('#med_1').on('click', function(e){
         $.ajax({
-            url: '/led?status=on',
+            url: '/medicine',
             method: 'GET',
+            data: {tray_id: 1}
             success: function(result) {
                 console.log(result);
          }
         });
         e.preventDefault();
     });
-
     $('#med_2').on('click', function(e){
         $.ajax({
-            url: '/led?status=off',
+            url: '/medicine',
             method: 'GET',
+            data: {tray_id: 2}
             success: function(result) {
                 console.log(result);
          }
         });
         e.preventDefault();
     });
-
+    $('#med_3').on('click', function(e){
+        $.ajax({
+            url: '/medicine',
+            method: 'GET',
+            data: {tray_id: 3}
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+    $('#med_4').on('click', function(e){
+        $.ajax({
+            url: '/medicine',
+            method: 'GET',
+            data: {tray_id: 4}
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+    $('#med_5').on('click', function(e){
+        $.ajax({
+            url: '/medicine',
+            method: 'GET',
+            data: {tray_id: 5}
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+    $('#med_6').on('click', function(e){
+        $.ajax({
+            url: '/medicine',
+            method: 'GET',
+            data: {tray_id: 6}
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
 
 </script>
 </body>

@@ -1,4 +1,7 @@
 from flask import Flask, render_template, jsonify, request
+from library.main_tray.tray_up import run_program as tray_up
+from library.main_tray.tray_down import run_program as tray_down
+from library.medicine_tray.medicine_tray import run_program as medicine_tray
 import RPi.GPIO as GPIO
 
 app = Flask(__name__)
@@ -6,6 +9,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.OUT)
 
+current_tray_position = 1
+medicine_tray_angle = 248.1
 
 @app.route('/')
 def home():
@@ -16,25 +21,39 @@ def home():
 def power():
 	status = request.args.get('status')
 	if status == 'true':
-		GPIO.output(18, GPIO.HIGH)
-		return jsonify({"message": "Led successfully turned on"})
+		tray_up()
+		return jsonify({"message": "Powered on successfully"})
 	elif status == 'false':
-		GPIO.output(18, GPIO.LOW)
-		return jsonify({"message": "Led successfully turned off"})
+		tray_down()
+		return jsonify({"message": "Powered off successfully"})
 	else:
 		pass
 
 
-@app.route('/led_on')
-def led_on():
-	GPIO.output(18, GPIO.HIGH)
-	return "LED on"
+@app.route('/medicine')
+def medicine():
+	global current_tray_position
+	tray_id = int(request.args.get('tray_id'))
+	if tray_id == current_tray_position:
+		return jsonify({"message": "tray on same position"})
+	elif tray_id < current_tray_position:
+		pass
+	elif tray_id > current_tray_position:
+		steps = tray_id * medicine_tray_angle
+		current_tray_position = tray_id
+		medicine_tray(steps=steps)
+		return jsonify({"message": "tray rotated successfully"})
 
 
-@app.route('/led_off')
-def led_off():
-	GPIO.output(18, GPIO.LOW)
-	return "LED off"
+@app.route('/camera')
+def camera():
+	global current_tray_position
+	direction = request.args.get('direction')
+	if direction == 'left':
+		pass
+	if direction == 'right':
+		pass
+	return jsonify({"message": "tray rotated successfully"})
 
 
 if __name__ == '__main__':
