@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from library.main_tray.tray_up import run_program as tray_up
 from library.main_tray.tray_down import run_program as tray_down
+# from library.camera_tray.camera_rotation import run_program as camera_tray
 from library.medicine_tray.medicine_tray import run_program as medicine_tray
 import RPi.GPIO as GPIO
 

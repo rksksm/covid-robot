@@ -18,6 +18,7 @@ def setup_forward():
 	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
 	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_left"])
 
+
 def setup_backward():
 	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
@@ -29,12 +30,11 @@ def setup_backward():
 	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_right"])
 
 
-def motor_rotate(pause=False):
-	if not pause:
-		gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
-		sleep(.001)
-		gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
-		sleep(.001)
+def motor_rotate():
+	gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
+	sleep(.001)
+	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
+	sleep(.001)
 
 
 def run_program(steps, direction):
@@ -45,5 +45,5 @@ def run_program(steps, direction):
 	print("setup completed")
 	counter = 0
 	while counter < steps:
-		motor_rotate(pause=False)
+		motor_rotate()
 		counter += 1
