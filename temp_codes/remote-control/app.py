@@ -37,11 +37,14 @@ def medicine():
 	if tray_id == current_tray_position:
 		return jsonify({"message": "tray on same position"})
 	elif tray_id < current_tray_position:
-		pass
-	elif tray_id > current_tray_position:
-		steps = tray_id * medicine_tray_angle
+		steps = (current_tray_position - tray_id) * medicine_tray_angle
 		current_tray_position = tray_id
-		medicine_tray(steps=steps)
+		medicine_tray(steps=steps, direction='backward')
+		return jsonify({"message": "tray rotated successfully"})
+	elif tray_id > current_tray_position:
+		steps = (tray_id - current_tray_position) * medicine_tray_angle
+		current_tray_position = tray_id
+		medicine_tray(steps=steps, direction='forward')
 		return jsonify({"message": "tray rotated successfully"})
 
 

@@ -46,7 +46,7 @@ def start_condition():
 
 
 def stop_condition():
-	if gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
+	if gpio.input(configuration['top_switch']) == gpio.HIGH or gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return False
 	else:
 		return True
@@ -55,7 +55,6 @@ def stop_condition():
 def run_program():
 	setup()
 	while True:
-		while start_condition():
-			while stop_condition():
-				motor_rotate()
+		while stop_condition():
+			motor_rotate()
 		break
