@@ -25,9 +25,9 @@ def setup():
 
 def motor_rotate():
 	gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
-	sleep(.02)
+	sleep(.002)
 	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
-	sleep(.02)
+	sleep(.002)
 
 
 def condition():
