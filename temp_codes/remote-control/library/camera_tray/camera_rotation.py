@@ -34,6 +34,10 @@ def motor_rotate_forward():
 def motor_rotate_backward():
 	gpio.output(configuration['motor_in1'], gpio.LOW)
 	gpio.output(configuration['motor_in2'], gpio.HIGH)
+	
+def motor_stop():
+	gpio.output(configuration['motor_in1'], gpio.LOW)
+	gpio.output(configuration['motor_in2'], gpio.LOW)
 
 
 def condition():
@@ -46,10 +50,10 @@ def condition():
 def run_program(direction):
 	setup()
 	print("setup completed")
-	while True:
-		if direction == 'forward':
-			motor_rotate_forward()
-		if direction == 'backward':
-			motor_rotate_backward()
-		sleep(2)
-		break
+	if direction == 'forward':
+		motor_rotate_forward()
+	if direction == 'backward':
+		motor_rotate_backward()
+	sleep(2)
+	motor_stop()
+
