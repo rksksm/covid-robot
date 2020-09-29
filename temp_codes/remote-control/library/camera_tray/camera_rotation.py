@@ -47,20 +47,17 @@ def stop_condition():
 def run_program(direction):
 	setup()
 	print("setup completed")
-	while not stop_condition:
-		if direction == 'forward':
-			print('right')
-			motor_rotate_forward()
-			if stop_condition():
-				motor_stop()
-			sleep(0.1)
-		if direction == 'backward':
-			print('left')
-			motor_rotate_forward()
-			if stop_condition():
-				motor_stop()
-			sleep(0.1)
-		if direction == 'stop':
+	if direction == 'forward':
+		print('right')
+		motor_rotate_forward()
+		if stop_condition():
 			motor_stop()
-		break
-
+		sleep(0.1)
+	if direction == 'backward':
+		print('left')
+		motor_rotate_forward()
+		if stop_condition():
+			motor_stop()
+		sleep(0.1)
+	if direction == 'stop':
+		motor_stop()
