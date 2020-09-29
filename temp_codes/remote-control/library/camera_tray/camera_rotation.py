@@ -43,11 +43,7 @@ def condition():
 		return True
 
 
-def run_program(steps, direction):
-	pass
-
-
-if __name__ == '__main__':
+def run_program(direction):
 	setup()
 	print("setup completed")
 	while True:

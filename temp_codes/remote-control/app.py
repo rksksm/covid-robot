@@ -53,10 +53,10 @@ def medicine():
 def camera():
 	direction = request.args.get('direction')
 	if direction == 'left':
-		camera_tray(steps=100, direction='backward')
+		camera_tray(direction='backward')
 		return jsonify({"message": "tray rotated successfully"})
 	if direction == 'right':
-		camera_tray(steps=100, direction='forward')
+		camera_tray(direction='forward')
 	return jsonify({"message": "tray rotated successfully"})
 
 
