@@ -64,3 +64,5 @@ def run_program(direction):
 		sleep(0.1)
 	if direction == 'stop':
 		motor_stop()
+	if stop_condition():
+		motor_stop()
