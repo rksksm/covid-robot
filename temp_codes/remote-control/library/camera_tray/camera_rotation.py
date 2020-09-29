@@ -9,6 +9,10 @@ print(configuration)
 motor_moving = False
 
 
+class ValueTooSmallError(Error):
+	pass
+
+
 def setup():
 	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
@@ -29,10 +33,12 @@ def motor_rotate_forward():
 	gpio.output(configuration['motor_in1'], gpio.HIGH)
 	gpio.output(configuration['motor_in2'], gpio.LOW)
 
+
 def motor_rotate_backward():
 	gpio.output(configuration['motor_in1'], gpio.LOW)
 	gpio.output(configuration['motor_in2'], gpio.HIGH)
-	
+
+
 def motor_stop():
 	gpio.output(configuration['motor_in1'], gpio.LOW)
 	gpio.output(configuration['motor_in2'], gpio.LOW)
@@ -41,8 +47,8 @@ def motor_stop():
 def stop_condition():
 	if gpio.input(configuration['switch']) == gpio.HIGH:
 		return True
-	
-	
+
+
 def cleanup():
 	gpio.cleanup()
 
@@ -53,16 +59,8 @@ def run_program(direction):
 	if direction == 'forward':
 		print('right')
 		motor_rotate_forward()
-		if stop_condition():
-			motor_stop()
-		sleep(0.1)
 	if direction == 'backward':
 		print('left')
 		motor_rotate_backward()
-		if stop_condition():
-			motor_stop()
-		sleep(0.1)
 	if direction == 'stop':
-		motor_stop()
-	if stop_condition():
 		motor_stop()
