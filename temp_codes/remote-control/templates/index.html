@@ -27,10 +27,13 @@
             <div class="col s12 center" style="padding: 1em;"><label class="center">Camera View</label></div>
             <div class="col s12" style="height: 13em; background: #343434"></div>
             <div class="col s12 center"><label>Camera Control</label></div>
-            <div class="col s6 center" id="left" style="padding: 4%;">
+            <div class="col s4 center" id="left" style="padding: 4%;">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons left">west</i>Left</a>
             </div>
-            <div class="col s6 center" id="right" style="padding: 4%;">
+            <div class="col s4 center" id="cam_stop" style="padding: 4%;">
+                <a class="waves-effect waves-light btn-floating"><i class="material-icons right">stop</i>stop</a>
+            </div>
+            <div class="col s4 center" id="right" style="padding: 4%;">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">east</i>Right</a>
             </div>
         </div>
@@ -157,6 +160,18 @@
             url: '/camera',
             method: 'GET',
             data: {direction: 'left'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#cam_stop').on('click', function(e){
+        $.ajax({
+            url: '/camera',
+            method: 'GET',
+            data: {direction: 'stop'},
             success: function(result) {
                 console.log(result);
          }

@@ -49,14 +49,17 @@ def run_program(direction):
 	print("setup completed")
 	while direction == 'forward':
 		motor_rotate_forward()
-		sleep(2)
-		motor_stop()
-		break
+		if stop_condition():
+			motor_stop()
+			break
+		sleep(0.1)
 	while direction == 'backward':
-		motor_rotate_backward()
-		sleep(2)
-		motor_stop()
-		break
-	if stop_condition():
-		motor_stop()
+		motor_rotate_forward()
+		if stop_condition():
+			motor_stop()
+			break
+		sleep(0.1)
+	if direction == 'backward':
+		gpio.cleanup()
+		
 

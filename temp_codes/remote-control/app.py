@@ -57,6 +57,9 @@ def camera():
 		return jsonify({"message": "tray rotated successfully"})
 	if direction == 'right':
 		camera_tray(direction='forward')
+	
+	if direction == 'stop':
+		camera_tray(direction='stop')
 	return jsonify({"message": "tray rotated successfully"})
 
 
