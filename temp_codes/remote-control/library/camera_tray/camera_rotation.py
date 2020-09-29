@@ -47,17 +47,15 @@ def stop_condition():
 def run_program(direction):
 	setup()
 	print("setup completed")
-	while direction == 'forward':
+	if direction == 'forward':
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
-			break
 		sleep(0.1)
-	while direction == 'backward':
+	if direction == 'backward':
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
-			break
 		sleep(0.1)
 	if direction == 'backward':
 		gpio.cleanup()
