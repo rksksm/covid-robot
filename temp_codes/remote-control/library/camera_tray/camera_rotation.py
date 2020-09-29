@@ -51,10 +51,12 @@ def run_program(direction):
 		motor_rotate_forward()
 		sleep(2)
 		motor_stop()
+		break
 	while direction == 'backward':
 		motor_rotate_backward()
 		sleep(2)
 		motor_stop()
+		break
 	if stop_condition():
 		motor_stop()
 
