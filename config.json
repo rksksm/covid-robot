@@ -10,8 +10,8 @@
 		"direction_down": 1
 	},
 	"camera_tray": {
-		"motor_1_direction_pin": 5,
-		"motor_1_step_pin": 6,
+		"motor_in1": 5,
+		"motor_in2": 6,
 		"switch": 11,
 		"direction_left": 0,
 		"direction_right": 1
@@ -19,7 +19,7 @@
 	"medicine_tray": {
 		"motor_1_direction_pin": 10,
 		"motor_1_step_pin": 9,
-		"switch": 11,
+		"switch": 25,
 		"direction_left": 0,
 		"direction_right": 1
 	},
