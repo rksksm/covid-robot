@@ -1,22 +1,28 @@
-from library.camera_tray.camera_rotation import setup as camera_rotation, cleanup as camera_rotation_clean
-# from library.main_tray.tray_down import setup as tray_down, cleanup as tray_down_clean
-# from library.main_tray.tray_up import setup as tray_up, cleanup as tray_up_clean
 import RPi.GPIO as gpio
 import json
 
 config_file = open("config.json", 'r')
 configuration = json.loads(config_file.read())
 
+
+def setup():
+	# setting up the RaspberryPi modes
+	gpio.setwarnings(False)  # Ignore warning for now
+	gpio.setmode(gpio.BCM)  # Use physical pin numbering
+	
+	# setting up the motor
+	gpio.setup(configuration['motor_in1'], gpio.OUT)
+	gpio.setup(configuration['motor_in2'], gpio.OUT)
+	
+	# setting up cut switches
+	gpio.setup(configuration['switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # switch
+
+setup_flag = False
 while True:
-	camera_rotation()
-	# tray_down()
-	# tray_up()
+	if not setup_flag:
+		setup()
+		setup_flag = True
 	
-	# #tray switch
-	# if gpio.input(configuration['tray']['top_switch']) == gpio.HIGH or gpio.input(configuration['tray']['top_switch']) == gpio.HIGH:
-	# 	tray_down_clean()
-	# 	tray_up_clean()
-	
-	# camera switch
 	if gpio.input(configuration['camera_tray']['switch']) == gpio.HIGH:
-		camera_rotation_clean()
+		gpio.cleanup()
+		setup_flag = False
