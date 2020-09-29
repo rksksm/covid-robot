@@ -9,10 +9,6 @@ print(configuration)
 motor_moving = False
 
 
-class ValueTooSmallError(Error):
-	pass
-
-
 def setup():
 	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
