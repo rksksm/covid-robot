@@ -54,10 +54,13 @@ def run_program(direction):
 	print("setup completed")
 	while gpio.input(configuration['switch']) == gpio.LOW:
 		if direction == 'forward':
-			print('right')
 			motor_rotate_forward()
+			sleep(2)
+			break
 		elif direction == 'backward':
-			print('left')
 			motor_rotate_backward()
+			sleep(2)
+			break
 		elif direction == 'stop':
 			motor_stop()
+			break
