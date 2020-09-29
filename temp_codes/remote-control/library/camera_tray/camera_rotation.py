@@ -52,8 +52,8 @@ def run_program(direction):
 	print("setup completed")
 	if direction == 'forward':
 		motor_rotate_forward()
+		sleep(2)
+		motor_stop()
 	if direction == 'backward':
 		motor_rotate_backward()
-	sleep(2)
-	motor_stop()
 
