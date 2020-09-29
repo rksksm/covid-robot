@@ -55,7 +55,7 @@ def run_program(direction):
 		sleep(0.1)
 	if direction == 'backward':
 		print('left')
-		motor_rotate_forward()
+		motor_rotate_backward()
 		if stop_condition():
 			motor_stop()
 		sleep(0.1)
