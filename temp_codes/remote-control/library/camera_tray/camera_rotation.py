@@ -48,11 +48,13 @@ def run_program(direction):
 	setup()
 	print("setup completed")
 	if direction == 'forward':
+		print('fwd')
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
 		sleep(0.1)
 	if direction == 'backward':
+		print('bkwd')
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
