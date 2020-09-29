@@ -19,7 +19,7 @@
 	"medicine_tray": {
 		"motor_1_direction_pin": 10,
 		"motor_1_step_pin": 9,
-		"switch": 25,
+		"switch": 11,
 		"direction_left": 0,
 		"direction_right": 1
 	},
