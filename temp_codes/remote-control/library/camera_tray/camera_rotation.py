@@ -40,12 +40,9 @@ def motor_stop():
 	gpio.output(configuration['motor_in2'], gpio.LOW)
 
 
-def condition():
+def stop_condition():
 	if gpio.input(configuration['switch']) == gpio.HIGH:
-		return False
-	else:
 		return True
-
 
 def run_program(direction):
 	setup()
@@ -56,4 +53,8 @@ def run_program(direction):
 		motor_stop()
 	if direction == 'backward':
 		motor_rotate_backward()
+		sleep(2)
+		motor_stop()
+	if stop_condition():
+		motor_stop()
 
