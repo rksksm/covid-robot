@@ -48,18 +48,18 @@ def run_program(direction):
 	setup()
 	print("setup completed")
 	if direction == 'forward':
-		print('fwd')
+		print('right')
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
 		sleep(0.1)
 	if direction == 'backward':
-		print('bkwd')
+		print('left')
 		motor_rotate_forward()
 		if stop_condition():
 			motor_stop()
 		sleep(0.1)
-	if direction == 'backward':
+	if direction == 'stop':
 		gpio.cleanup()
 		
 
