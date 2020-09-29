@@ -13,7 +13,7 @@ def setup():
 	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
 	gpio.setmode(gpio.BCM)  # Use physical pin numbering
-
+	print(configuration)
 	# setting up the motor
 	gpio.setup(configuration['motor_in1'], gpio.OUT)
 	gpio.setup(configuration['motor_in2'], gpio.OUT)
