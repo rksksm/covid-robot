@@ -3,7 +3,7 @@ import json
 
 config_file = open("config.json", 'r')
 configuration = json.loads(config_file.read())
-
+print(configuration)
 
 def setup():
 	# setting up the RaspberryPi modes
