@@ -52,13 +52,12 @@ def cleanup():
 def run_program(direction):
 	setup()
 	print("setup completed")
-	if direction == 'forward':
-		print('right')
-		motor_rotate_forward()
-	if direction == 'backward':
-		print('left')
-		motor_rotate_backward()
-	if direction == 'stop':
-		motor_stop()
-	if gpio.input(configuration['switch']) == gpio.HIGH:
-		motor_stop()
+	while gpio.input(configuration['switch']) == gpio.LOW:
+		if direction == 'forward':
+			print('right')
+			motor_rotate_forward()
+		elif direction == 'backward':
+			print('left')
+			motor_rotate_backward()
+		elif direction == 'stop':
+			motor_stop()
