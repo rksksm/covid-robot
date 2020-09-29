@@ -23,6 +23,6 @@ while True:
 		setup()
 		setup_flag = True
 	
-	if gpio.input(configuration['camera_tray']['switch']) == gpio.HIGH:
+	if gpio.input(configuration['switch']) == gpio.HIGH:
 		gpio.cleanup()
 		setup_flag = False
