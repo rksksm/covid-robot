@@ -50,19 +50,19 @@
 
         <div style="margin-top: 2em; ">
             <div class="col s12 center" style="padding: 1em;"><label>Robot Movement Control</label></div>
-            <div class="col s12 center" style="padding: 4%;">
+            <div class="col s12 center" id="move_forward" style="padding: 4%;">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">north</i></a>
             </div>
-            <div class="col s4 center">
+            <div class="col s4 center" id="move_right">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">west</i></a>
             </div>
-            <div class="col s4 center">
+            <div class="col s4 center" id="stop">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">stop</i></a>
             </div>
-            <div class="col s4 center">
+            <div class="col s4 center" id="move_left">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">east</i></a>
             </div>
-            <div class="col s12 center" style="padding: 4%;">
+            <div class="col s12 center" id="move_backward" style="padding: 4%;">
                 <a class="waves-effect waves-light btn-floating"><i class="material-icons right">south</i></a>
             </div>
         </div>
@@ -169,6 +169,66 @@
             url: '/medicine',
             method: 'GET',
             data: {direction: 'right'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#stop').on('click', function(e){
+        $.ajax({
+            url: '/bldc',
+            method: 'GET',
+            data: {instruction: 'stop'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#move_backward').on('click', function(e){
+        $.ajax({
+            url: '/bldc',
+            method: 'GET',
+            data: {instruction: 'move_backward'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#move_right').on('click', function(e){
+        $.ajax({
+            url: '/bldc',
+            method: 'GET',
+            data: {instruction: 'move_right'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#move_left').on('click', function(e){
+        $.ajax({
+            url: '/bldc',
+            method: 'GET',
+            data: {instruction: 'move_left'},
+            success: function(result) {
+                console.log(result);
+         }
+        });
+        e.preventDefault();
+    });
+
+    $('#move_forward').on('click', function(e){
+        $.ajax({
+            url: '/bldc',
+            method: 'GET',
+            data: {instruction: 'move_forward'},
             success: function(result) {
                 console.log(result);
          }

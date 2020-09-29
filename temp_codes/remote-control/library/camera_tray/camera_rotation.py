@@ -9,39 +9,31 @@ print(configuration)
 motor_moving = False
 
 
-def setup_forward():
+def setup():
 	# setting up the RaspberryPi modes
 	gpio.setwarnings(False)  # Ignore warning for now
 	gpio.setmode(gpio.BCM)  # Use physical pin numbering
 
-	# setting up the motor 1
-	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
-	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_left"])
+	# setting up the motor
+	gpio.setup(configuration['motor_in1'], gpio.OUT)
+	gpio.setup(configuration['motor_in2'], gpio.OUT)
+	gpio.setup(configuration['motor_ena'], gpio.OUT)
+	gpio.output(configuration['motor_in1'], gpio.LOW)
+	gpio.output(configuration['motor_in2'], gpio.LOW)
+	motorSpeed = gpio.PWM(configuration['motor_ena'], 1000)
+	motorSpeed.start(100)
 
 	# setting up cut switches
 	gpio.setup(configuration['switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # switch
 
 
-def setup_backward():
-	# setting up the RaspberryPi modes
-	gpio.setwarnings(False)  # Ignore warning for now
-	gpio.setmode(gpio.BCM)  # Use physical pin numbering
+def motor_rotate_forward():
+	gpio.output(configuration['motor_in1'], gpio.HIGH)
+	gpio.output(configuration['motor_in2'], gpio.LOW)
 
-	# setting up the motor 1
-	gpio.setup(configuration['motor_1_direction_pin'], gpio.OUT)
-	gpio.setup(configuration['motor_1_step_pin'], gpio.OUT)
-	gpio.output(configuration['motor_1_direction_pin'], configuration["direction_left"])
-
-	# setting up cut switches
-	gpio.setup(configuration['switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # switch
-
-
-def motor_rotate():
-	gpio.output(configuration['motor_1_step_pin'], gpio.HIGH)
-	sleep(.0002)
-	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
-	sleep(.0002)
+def motor_rotate_backward():
+	gpio.output(configuration['motor_in1'], gpio.LOW)
+	gpio.output(configuration['motor_in2'], gpio.HIGH)
 
 
 def condition():
@@ -52,12 +44,12 @@ def condition():
 
 
 def run_program(steps, direction):
-	if direction == 'forward':
-		setup_forward()
-	if direction == 'backward':
-		setup_backward()
+	setup()
 	print("setup completed")
-	counter = 0
-	while counter < steps:
-		motor_rotate()
-		counter += 1
+	while True:
+		if direction == 'forward':
+			motor_rotate_forward()
+		if direction == 'backward':
+			motor_rotate_backward()
+		sleep(2)
+		break
