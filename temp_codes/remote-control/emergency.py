@@ -24,5 +24,6 @@ while True:
 		setup_flag = True
 	
 	if gpio.input(configuration['switch']) == gpio.HIGH:
+		print("pressed")
 		gpio.cleanup()
 		setup_flag = False
