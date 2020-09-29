@@ -53,6 +53,9 @@ def stop_condition():
 	else:
 		return True
 
+def cleanup():
+	gpio.cleanup()
+	
 
 def run_program():
 	setup()

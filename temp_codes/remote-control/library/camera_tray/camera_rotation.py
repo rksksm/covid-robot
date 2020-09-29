@@ -43,6 +43,11 @@ def motor_stop():
 def stop_condition():
 	if gpio.input(configuration['switch']) == gpio.HIGH:
 		return True
+	
+	
+def cleanup():
+	gpio.cleanup()
+
 
 def run_program(direction):
 	setup()

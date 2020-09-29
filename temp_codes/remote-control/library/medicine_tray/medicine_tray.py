@@ -37,6 +37,10 @@ def motor_rotate():
 	sleep(.001)
 
 
+def cleanup():
+	gpio.cleanup()
+
+
 def run_program(steps, direction):
 	if direction == 'forward':
 		setup_forward()
@@ -47,3 +51,4 @@ def run_program(steps, direction):
 	while counter < steps:
 		motor_rotate()
 		counter += 1
+	

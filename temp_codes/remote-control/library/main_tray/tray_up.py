@@ -45,6 +45,10 @@ def start_condition():
 		return False
 
 
+def cleanup():
+	gpio.cleanup()
+
+
 def stop_condition():
 	if gpio.input(configuration['top_switch']) == gpio.HIGH or gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 		return False
