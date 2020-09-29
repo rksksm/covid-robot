@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import json
 
 config_file = open("./config.json", 'r')
-configuration = json.loads(config_file.read())
+configuration = json.loads(config_file.read())['camera_tray']
 print(configuration)
 
 def setup():
