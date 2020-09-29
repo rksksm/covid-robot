@@ -17,11 +17,11 @@ def setup():
 	# setting up the motor
 	gpio.setup(configuration['motor_in1'], gpio.OUT)
 	gpio.setup(configuration['motor_in2'], gpio.OUT)
-	gpio.setup(configuration['motor_ena'], gpio.OUT)
+	# gpio.setup(configuration['motor_ena'], gpio.OUT)
 	gpio.output(configuration['motor_in1'], gpio.LOW)
 	gpio.output(configuration['motor_in2'], gpio.LOW)
-	motorSpeed = gpio.PWM(configuration['motor_ena'], 1000)
-	motorSpeed.start(100)
+	# motorSpeed = gpio.PWM(configuration['motor_ena'], 1000)
+	# motorSpeed.start(100)
 
 	# setting up cut switches
 	gpio.setup(configuration['switch'], gpio.IN, pull_up_down=gpio.PUD_DOWN)  # switch
@@ -43,7 +43,8 @@ def condition():
 		return True
 
 
-def run_program(steps, direction):
+# def run_program(steps, direction):
+if __name__ == '__main__':
 	setup()
 	print("setup completed")
 	while True:

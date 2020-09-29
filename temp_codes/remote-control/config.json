@@ -12,8 +12,7 @@
 	"camera_tray": {
 		"motor_in1": 5,
 		"motor_in2": 6,
-		"motor_ena": 11,
-		"switch": 0,
+		"switch": 11,
 		"direction_left": 0,
 		"direction_right": 1
 	},
