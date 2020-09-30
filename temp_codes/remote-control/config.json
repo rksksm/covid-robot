@@ -12,7 +12,7 @@
 	"camera_tray": {
 		"motor_in1": 5,
 		"motor_in2": 6,
-		"switch": 11,
+		"switch": 11
 	},
 	"medicine_tray": {
 		"motor_1_direction_pin": 10,
