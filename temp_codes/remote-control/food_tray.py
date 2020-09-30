@@ -38,6 +38,14 @@ def motor_rotate():
 	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
 	gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
 	sleep(.0002)
+	
+def motor_stop():
+	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
+	gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
+	sleep(.0002)
+	gpio.output(configuration['motor_1_step_pin'], gpio.LOW)
+	gpio.output(configuration['motor_2_step_pin'], gpio.LOW)
+	sleep(.0002)
 
 
 operating_mode = ''
@@ -53,10 +61,9 @@ while True:
 	if operating_mode == 'refill':
 		gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
 		gpio.output(configuration['motor_2_direction_pin'], configuration["direction_down"])
-		while gpio.input(configuration['top_switch']) == gpio.HIGH and gpio.input(configuration['bottom_switch']) == gpio.LOW:
-			motor_rotate()
-			if gpio.input(configuration['top_switch']) == gpio.LOW and gpio.input(configuration['bottom_switch']) == gpio.HIGH:
-				break
+		motor_rotate()
+		if gpio.input(configuration['bottom_switch']) == gpio.HIGH:
+			motor_stop()
 	# 			if not gpio.input(configuration['IR_sensor']):
 	# 				motor_rotate()
 	
