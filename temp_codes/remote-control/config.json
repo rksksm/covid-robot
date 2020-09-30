@@ -33,5 +33,10 @@
 		"use": 22,
 		"direction_up": 0,
 		"direction_down": 1
+	},
+	"bldc": {
+		"PWM1": 12,
+		"ground1": 1,
+		"ground2": 26
 	}
 }
