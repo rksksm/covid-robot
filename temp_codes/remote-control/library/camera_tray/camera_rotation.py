@@ -56,14 +56,14 @@ def run_program(direction):
 	if direction == 'forward':
 		print("left")
 		motor_rotate_forward()
-		sleep(2)
+		# sleep(2)
 		# break
-	elif direction == 'backward':
+	if direction == 'backward':
 		print("right")
 		motor_rotate_backward()
-		sleep(2)
+		# sleep(2)
 		# break
-	elif direction == 'stop':
+	if direction == 'stop':
 		print("stop")
 		motor_stop()
 		# break
