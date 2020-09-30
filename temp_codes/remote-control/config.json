@@ -29,8 +29,8 @@
 		"motor_2_step_pin": 7,
 		"top_switch": 16,
 		"bottom_switch": 17,
-		"pushbutton_refill": 27,
-		"pushbutton_use": 22,
+		"refill": 27,
+		"use": 22,
 		"direction_up": 0,
 		"direction_down": 1
 	}
