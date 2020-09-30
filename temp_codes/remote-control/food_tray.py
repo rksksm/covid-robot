@@ -67,6 +67,6 @@ while True:
 			motor_rotate(rotate=False)
 			operating_mode = ''
 		if gpio.input(configuration['IR_sensor']):
-			motor_rotate(rotate=False)
-		if not gpio.input(configuration['IR_sensor']):
 			motor_rotate(rotate=True)
+		if not gpio.input(configuration['IR_sensor']):
+			motor_rotate(rotate=False)
