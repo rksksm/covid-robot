@@ -54,14 +54,11 @@ while True:
 	if operating_mode == 'refill':
 		gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
 		gpio.output(configuration['motor_2_direction_pin'], configuration["direction_down"])
-		motor_rotate(rotate=True)
-		
 		if gpio.input(configuration['bottom_switch']) == gpio.HIGH:
 			motor_rotate(rotate=False)
 			operating_mode = ''
-			
-		# if not gpio.input(configuration['IR_sensor']):
-		# 	motor_rotate()
+		if not gpio.input(configuration['IR_sensor']):
+			motor_rotate(rotate=True)
 	
 	if operating_mode == 'use':
 		gpio.output(configuration['motor_1_direction_pin'], configuration["direction_up"])
@@ -70,5 +67,5 @@ while True:
 		if gpio.input(configuration['top_switch']) == gpio.HIGH:
 			motor_rotate(rotate=False)
 			operating_mode = ''
-	# 			if gpio.input(configuration['IR_sensor']):
-	# 				motor_rotate()
+		if gpio.input(configuration['IR_sensor']):
+			motor_rotate(rotate=True)
