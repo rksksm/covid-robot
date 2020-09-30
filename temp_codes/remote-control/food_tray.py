@@ -63,9 +63,8 @@ while True:
 	if operating_mode == 'use':
 		gpio.output(configuration['motor_1_direction_pin'], configuration["direction_up"])
 		gpio.output(configuration['motor_2_direction_pin'], configuration["direction_up"])
-		motor_rotate(rotate=True)
 		if gpio.input(configuration['top_switch']) == gpio.HIGH:
 			motor_rotate(rotate=False)
 			operating_mode = ''
 		if gpio.input(configuration['IR_sensor']):
-			motor_rotate(rotate=True)
+			motor_rotate(rotate=False)
