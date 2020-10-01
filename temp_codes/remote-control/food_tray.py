@@ -48,6 +48,8 @@ while True:
 		operating_mode = 'use'
 	if gpio.input(configuration['refill']):
 		operating_mode = 'refill'
+		
+	print(operating_mode)
 	if operating_mode == 'refill':
 		gpio.output(configuration['motor_1_direction_pin'], configuration["direction_down"])
 		gpio.output(configuration['motor_2_direction_pin'], configuration["direction_down"])
