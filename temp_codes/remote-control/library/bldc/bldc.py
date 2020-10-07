@@ -7,8 +7,6 @@ configuration = json.loads(config_file.read())["bldc"]
 print(configuration)
 
 motor_moving = False
-global pi_pwm1
-global pi_pwm2
 direction = 1
 
 
@@ -34,38 +32,38 @@ def setup():
 	pi_pwm2.start(50)
 	gpio.output(configuration['startStop1'], gpio.LOW)
 	gpio.output(configuration['startStop2'], gpio.LOW)
-
+	return pi_pwm1, pi_pwm2
 
 def cleanup():
 	gpio.cleanup()
 
 
-def move_forward():
+def move_forward(pwm1, pwm2):
 	gpio.output(configuration['Direction1'], gpio.LOW)
 	gpio.output(configuration['Direction2'], gpio.LOW)
-	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
+	pwm1.ChangeDutyCycle(55)
+	pwm2.ChangeDutyCycle(55)
 
 
-def move_backward():
+def move_backward(pwm1, pwm2):
 	gpio.output(configuration['Direction1'], gpio.HIGH)
 	gpio.output(configuration['Direction2'], gpio.HIGH)
-	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
+	pwm1.ChangeDutyCycle(55)
+	pwm2.ChangeDutyCycle(55)
 
 
-def move_left():
+def move_left(pwm1, pwm2):
 	gpio.output(configuration['Direction1'], gpio.LOW)
 	gpio.output(configuration['Direction2'], gpio.HIGH)
-	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
+	pwm1.ChangeDutyCycle(55)
+	pwm2.ChangeDutyCycle(55)
 
 
-def move_right():
+def move_right(pwm1, pwm2):
 	gpio.output(configuration['Direction1'], gpio.HIGH)
 	gpio.output(configuration['Direction2'], gpio.LOW)
-	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
+	pwm1.ChangeDutyCycle(55)
+	pwm2.ChangeDutyCycle(55)
 
 
 def stop():
@@ -74,15 +72,15 @@ def stop():
 
 
 def run_program(direction=None):
-	setup()
+	pwm1, pwm2 = setup()
 	print("setup completed")
 	if direction == 'left':
-		move_left()
+		move_left(pwm1, pwm2)
 	if direction == 'right':
-		move_right()
+		move_right(pwm1, pwm2)
 	if direction == 'forward':
-		move_forward()
+		move_forward(pwm1, pwm2)
 	if direction == 'backward':
-		move_backward()
+		move_backward(pwm1, pwm2)
 	if direction == 'stop':
 		stop()
