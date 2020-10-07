@@ -29,13 +29,12 @@ def setup():
 	# pi_pwm2.start(50)
 	# gpio.output(configuration['startStop1'], gpio.LOW)
 	# gpio.output(configuration['startStop2'], gpio.LOW)
-	return pi_pwm1, pi_pwm2
 
 def cleanup():
 	gpio.cleanup()
 
 
-def move_forward(pwm1, pwm2):
+def move_forward():
 	gpio.output(configuration['Direction1'], gpio.LOW)
 	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
 	pi_pwm1.start(50)
@@ -43,7 +42,7 @@ def move_forward(pwm1, pwm2):
 	# pwm2.ChangeDutyCycle(55)
 
 
-def move_backward(pwm1, pwm2):
+def move_backward():
 	gpio.output(configuration['Direction1'], gpio.HIGH)
 	# gpio.output(configuration['Direction2'], gpio.HIGH)
 	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
@@ -52,7 +51,7 @@ def move_backward(pwm1, pwm2):
 	# pwm2.ChangeDutyCycle(55)
 
 
-def move_left(pwm1, pwm2):
+def move_left():
 	gpio.output(configuration['Direction1'], gpio.LOW)
 	# gpio.output(configuration['Direction2'], gpio.HIGH)
 	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
@@ -60,7 +59,7 @@ def move_left(pwm1, pwm2):
 	pi_pwm1.ChangeDutyCycle(55)
 	# pwm2.ChangeDutyCycle(55)
 
-def move_right(pwm1, pwm2):
+def move_right():
 	gpio.output(configuration['Direction1'], gpio.HIGH)
 	# gpio.output(configuration['Direction2'], gpio.LOW)
 	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
