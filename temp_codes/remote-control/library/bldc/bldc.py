@@ -69,7 +69,7 @@ def move_right():
 
 def stop():
 	gpio.output(configuration['startStop1'], gpio.HIGH)
-	gpio.output(configuration['startStop2'], gpio.HIGH)
+	# gpio.output(configuration['startStop2'], gpio.HIGH)
 
 
 def run_program(direction=None):
