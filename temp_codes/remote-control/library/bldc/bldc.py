@@ -76,12 +76,12 @@ def run_program(direction=None):
 	setup()
 	print("setup completed")
 	if direction == 'left':
-		move_left(pwm1, pwm2)
+		move_left()
 	if direction == 'right':
-		move_right(pwm1, pwm2)
+		move_right()
 	if direction == 'forward':
-		move_forward(pwm1, pwm2)
+		move_forward()
 	if direction == 'backward':
-		move_backward(pwm1, pwm2)
+		move_backward()
 	if direction == 'stop':
 		stop()
