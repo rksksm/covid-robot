@@ -36,7 +36,10 @@
 	},
 	"bldc": {
 		"PWM1": 12,
-		"ground1": 1,
-		"ground2": 26
+		"startStop1": 1,
+		"Direction1": 26,
+		"PWM2": 13,
+		"startStop2": 0,
+		"Direction2": 4
 	}
 }

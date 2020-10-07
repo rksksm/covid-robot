@@ -207,7 +207,7 @@
         $.ajax({
             url: '/bldc',
             method: 'GET',
-            data: {instruction: 'move_backward'},
+            data: {instruction: 'backward'},
             success: function(result) {
                 console.log(result);
          }
@@ -219,7 +219,7 @@
         $.ajax({
             url: '/bldc',
             method: 'GET',
-            data: {instruction: 'move_right'},
+            data: {instruction: 'right'},
             success: function(result) {
                 console.log(result);
          }
@@ -231,7 +231,7 @@
         $.ajax({
             url: '/bldc',
             method: 'GET',
-            data: {instruction: 'move_left'},
+            data: {instruction: 'left'},
             success: function(result) {
                 console.log(result);
          }
@@ -243,7 +243,7 @@
         $.ajax({
             url: '/bldc',
             method: 'GET',
-            data: {instruction: 'move_forward'},
+            data: {instruction: 'forward'},
             success: function(result) {
                 console.log(result);
          }

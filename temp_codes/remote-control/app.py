@@ -3,6 +3,7 @@ from library.main_tray.tray_up import run_program as tray_up
 from library.main_tray.tray_down import run_program as tray_down
 from library.camera_tray.camera_rotation import run_program as camera_tray
 from library.medicine_tray.medicine_tray import run_program as medicine_tray
+from library.bldc.bldc import run_program as bldc
 import RPi.GPIO as GPIO
 
 app = Flask(__name__)
@@ -61,6 +62,26 @@ def camera():
 	if direction == 'stop':
 		camera_tray(direction='stop')
 	return jsonify({"message": "tray rotated successfully"})
+
+
+@app.route('/bldc')
+def camera():
+	command = request.args.get('instruction')
+	if command == 'forward':
+		bldc(direction='forward')
+		return jsonify({"message": "tray rotated successfully"})
+	if command == 'backward':
+		bldc(direction='backward')
+		return jsonify({"message": "tray rotated successfully"})
+	if command == 'left':
+		bldc(direction='backward')
+		return jsonify({"message": "tray rotated successfully"})
+	if command == 'right':
+		bldc(direction='forward')
+		return jsonify({"message": "tray rotated successfully"})
+	if command == 'stop':
+		bldc(direction='stop')
+		return jsonify({"message": "tray rotated successfully"})
 
 
 if __name__ == '__main__':
