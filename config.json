@@ -12,9 +12,7 @@
 	"camera_tray": {
 		"motor_in1": 5,
 		"motor_in2": 6,
-		"switch": 11,
-		"direction_left": 0,
-		"direction_right": 1
+		"switch": 11
 	},
 	"medicine_tray": {
 		"motor_1_direction_pin": 10,
@@ -31,9 +29,17 @@
 		"motor_2_step_pin": 7,
 		"top_switch": 16,
 		"bottom_switch": 17,
-		"pushbutton_refill": 27,
-		"pushbutton_use": 22,
+		"refill": 27,
+		"use": 22,
 		"direction_up": 0,
 		"direction_down": 1
+	},
+	"bldc": {
+		"PWM1": 12,
+		"startStop1": 1,
+		"Direction1": 26,
+		"PWM2": 13,
+		"startStop2": 0,
+		"Direction2": 4
 	}
 }
