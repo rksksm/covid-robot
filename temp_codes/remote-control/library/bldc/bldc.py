@@ -7,8 +7,8 @@ configuration = json.loads(config_file.read())["bldc"]
 print(configuration)
 
 motor_moving = False
-pi_pwm1 = None
-pi_pwm2 = None
+global pi_pwm1
+global pi_pwm2
 direction = 1
 
 
