@@ -65,7 +65,7 @@ def camera():
 
 
 @app.route('/bldc')
-def bldc():
+def bldc_move():
 	command = request.args.get('instruction')
 	print(command)
 	if command == 'forward':

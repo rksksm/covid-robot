@@ -73,7 +73,7 @@ def stop():
 	gpio.output(configuration['startStop2'], gpio.HIGH)
 
 
-def run_program(direction):
+def run_program(direction=None):
 	setup()
 	print("setup completed")
 	if direction == 'left':
