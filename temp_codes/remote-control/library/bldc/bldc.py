@@ -73,7 +73,7 @@ def stop():
 
 
 def run_program(direction=None):
-	pwm1, pwm2 = setup()
+	setup()
 	print("setup completed")
 	if direction == 'left':
 		move_left(pwm1, pwm2)
