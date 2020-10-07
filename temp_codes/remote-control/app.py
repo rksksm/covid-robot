@@ -67,6 +67,7 @@ def camera():
 @app.route('/bldc')
 def camera():
 	command = request.args.get('instruction')
+	print(command)
 	if command == 'forward':
 		bldc(direction='forward')
 		return jsonify({"message": "tray rotated successfully"})
