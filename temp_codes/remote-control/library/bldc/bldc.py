@@ -7,8 +7,6 @@ configuration = json.loads(config_file.read())["bldc"]
 print(configuration)
 
 motor_moving = False
-pi_pwm1 = None
-pi_pwm2 = None
 direction = 1
 
 
@@ -22,58 +20,42 @@ def setup():
 	gpio.setup(configuration['startStop1'], gpio.OUT)
 	gpio.setup(configuration['Direction1'], gpio.OUT)
 
-	# setting up the motor 1
-	gpio.setup(configuration['PWM2'], gpio.OUT)
-	gpio.setup(configuration['startStop2'], gpio.OUT)
-	gpio.setup(configuration['Direction2'], gpio.OUT)
-
-	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
-	pi_pwm1.start(50)
-
-	pi_pwm2 = gpio.PWM(configuration['PWM2'], 1000)  # create PWM instance with frequency
-	pi_pwm2.start(50)
-	gpio.output(configuration['startStop1'], gpio.LOW)
-	gpio.output(configuration['startStop2'], gpio.LOW)
-
-
 def cleanup():
 	gpio.cleanup()
 
 
 def move_forward():
 	gpio.output(configuration['Direction1'], gpio.LOW)
-	gpio.output(configuration['Direction2'], gpio.LOW)
+	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
+	pi_pwm1.start(50)
 	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
 
 
 def move_backward():
 	gpio.output(configuration['Direction1'], gpio.HIGH)
-	gpio.output(configuration['Direction2'], gpio.HIGH)
+	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
+	pi_pwm1.start(50)
 	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
+	# pwm2.ChangeDutyCycle(55)
 
 
 def move_left():
 	gpio.output(configuration['Direction1'], gpio.LOW)
-	gpio.output(configuration['Direction2'], gpio.HIGH)
+	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
+	pi_pwm1.start(50)
 	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
-
 
 def move_right():
 	gpio.output(configuration['Direction1'], gpio.HIGH)
-	gpio.output(configuration['Direction2'], gpio.LOW)
+	pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)  # create PWM instance with frequency
+	pi_pwm1.start(50)
 	pi_pwm1.ChangeDutyCycle(55)
-	pi_pwm2.ChangeDutyCycle(55)
-
 
 def stop():
 	gpio.output(configuration['startStop1'], gpio.HIGH)
-	gpio.output(configuration['startStop2'], gpio.HIGH)
 
 
-def run_program(direction):
+def run_program(direction=None):
 	setup()
 	print("setup completed")
 	if direction == 'left':
