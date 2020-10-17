@@ -32,17 +32,19 @@ pi_pwm1.start(20)
 @app.route('/bldc')
 def bldc_move():
 	command = request.args.get('instruction')
-	print(command)
 	if command == 'forward':
-		pass
-	if command == 'backward':
-		pass
-	if command == 'left':
-		pass
-	if command == 'right':
-		pass
-	if command == 'stop':
-		pass
+		print(command)
+	elif command == 'backward':
+		print(command)
+	elif command == 'left':
+		print(command)
+	elif command == 'right':
+		print(command)
+	elif command == 'stop':
+		print(command)
+	else:
+		print("nothing")
+	return command
 
 if __name__ == '__main__':
 	try:
