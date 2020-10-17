@@ -33,7 +33,8 @@ pi_pwm1.start(20)
 def bldc_move():
 	command = request.args.get('instruction')
 	if command == 'forward':
-		pi_pwm1.ChangeDutyCycle(100)
+		while True:
+			pi_pwm1.ChangeDutyCycle(100)
 	elif command == 'backward':
 		print(command)
 	elif command == 'left':
