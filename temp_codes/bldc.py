@@ -38,8 +38,10 @@ def bldc_move():
 	elif command == 'backward':
 		print(command)
 	elif command == 'left':
+		print(command)
 		gpio.output(configuration['startStop1'], gpio.HIGH)
 	elif command == 'right':
+		print(command)
 		gpio.output(configuration['startStop1'], gpio.LOW)
 	elif command == 'stop':
 		# while True:
