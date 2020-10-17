@@ -20,7 +20,7 @@ gpio.setup(configuration['PWM1'], gpio.OUT)
 gpio.setup(configuration['startStop1'], gpio.OUT)
 gpio.setup(configuration['Direction1'], gpio.OUT)
 pi_pwm1 = gpio.PWM(configuration['PWM1'], 1000)
-pi_pwm1.start(20)
+# pi_pwm1.start(20)
 
 # while True:
 # 	for i in range(0, 100, 5):
@@ -33,17 +33,17 @@ pi_pwm1.start(20)
 def bldc_move():
 	command = request.args.get('instruction')
 	if command == 'forward':
-		while True:
-			pi_pwm1.ChangeDutyCycle(100)
+		# while True:
+		pi_pwm1.ChangeDutyCycle(100)
 	elif command == 'backward':
 		print(command)
 	elif command == 'left':
-		print(command)
+		gpio.output(configuration['startStop1'], gpio.HIGH)
 	elif command == 'right':
-		print(command)
+		gpio.output(configuration['startStop1'], gpio.LOW)
 	elif command == 'stop':
-		while True:
-			pi_pwm1.ChangeDutyCycle(0)
+		# while True:
+		pi_pwm1.ChangeDutyCycle(0)
 	else:
 		print("nothing")
 	return command
