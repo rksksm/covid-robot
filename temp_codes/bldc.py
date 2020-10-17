@@ -1,14 +1,14 @@
 import RPi.GPIO as gpio
 from time import sleep
 
-configuration = {"bldc": {
+configuration = {
 	"PWM1": 12,
 	"startStop1": 1,
 	"Direction1": 26,
 	"PWM2": 13,
 	"startStop2": 0,
 	"Direction2": 4
-}}
+}
 
 gpio.setwarnings(False)  # Ignore warning for now
 gpio.setmode(gpio.BCM)  # Use physical pin numbering
