@@ -42,7 +42,8 @@ def bldc_move():
 	elif command == 'right':
 		print(command)
 	elif command == 'stop':
-		pi_pwm1.ChangeDutyCycle(0)
+		while True:
+			pi_pwm1.ChangeDutyCycle(0)
 	else:
 		print("nothing")
 	return command
