@@ -57,6 +57,7 @@ if __name__ == '__main__':
 			gpio.output(configuration["startStop1"], gpio.HIGH)
 			sleep(2)
 			gpio.output(configuration["startStop1"], gpio.LOW)
+			sleep(2)
 			# for i in range(0, 100, 5):
 			# 	pi_pwm1.ChangeDutyCycle(i)
 			# 	sleep(1)
